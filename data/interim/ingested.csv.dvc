@@ -1,0 +1,5 @@
+outs:
+- md5: 29971a124561a087be41a96d1e3051a5
+  size: 10875414
+  hash: md5
+  path: ingested.csv

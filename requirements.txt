@@ -9,3 +9,4 @@ chandan-aiops
 loguru
 dvc
 mlflow
+imblearn
