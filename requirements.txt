@@ -10,3 +10,5 @@ loguru
 dvc
 mlflow
 imblearn
+optuna
+

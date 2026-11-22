@@ -13,11 +13,30 @@ data:
   n_components: 0.95 
 
 model:
-  type: random_forest           # random_forest | logistic_regression
-  params:
-    n_estimators: 100
-    max_depth: 5
+  task: classification           # random_forest | logistic_regression
+  metric: f1
+  time_budget: 120
+  estimator_list:
+      - lgbm
+      - xgboost
+      - rf
+      - extra_tree
+      - lrl1  
+  
+  eval_method: cv
+  n_splits: 5
+  verbose: 1
+
+mlflow:
+  experiment_name: Coal_Mine_Predictive_Maintenance
+  tracking_uri: mlruns
+  model_name: CoalMineFailureModel
+  model_artifact: final_model
+
+evaluation:
+  positive_label: 1
+  primary_metric: recall
 
 artifacts:
-  model_dir: models             # versioned models are saved here
-  report_dir: reports           # metrics JSON files are saved here
+  model_dir: models
+  report_dir: reports

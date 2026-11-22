@@ -1,6 +1,7 @@
 
 from src.data_ingestion import data_ingestion
 from src.data_preprocessing import data_preprocessing
+from src.model_building import model_build
 from src.utils import logger
 
 
@@ -21,7 +22,7 @@ def main():
             y_test
         ) = data_preprocessing(df)
 
-        # Step 3: Display Dataset Shapes
+        # Display Dataset Shapes
         logger.info(f"After PCA - X_train Shape: {X_train_pca.shape}")
         logger.info(f"After PCA - X_test Shape: {X_test_pca.shape}")
 
@@ -29,6 +30,11 @@ def main():
         logger.info(f"Original y_test Shape: {y_test.shape}")
 
         # logger.success("MLOps Pipeline Execution Completed Successfully.")
+        
+        # Step 3: Model Building
+        automl,automl_settings = model_build(X_train_pca,X_test_pca,y_train_resample,y_test)
+        
+
 
     except Exception as e:
         logger.exception(f"Pipeline Execution Failed: {e}")
